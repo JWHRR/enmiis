@@ -1,9 +1,8 @@
-# ENMIIS Atelier
+# ENMIIS
 
-A premium real-time 3D configurator for graduation apparel — robes, capes, American
-and European stoles, and Miss sashes. Measurements reshape the garment live, embroidery
-is stitched onto the fabric as you type, and a formula-driven pricing engine estimates
-cost, fabric consumption, machine time and delivery on every change.
+Premium graduation robes and capes — a shop-first ecommerce experience with an
+optional real-time 3D atelier for custom measurements and live-embroidered
+personalization.
 
 ## Run it
 
@@ -12,22 +11,23 @@ npm install
 npm run dev
 ```
 
-- `/` — cinematic landing page (3D hero, parallax, product cards)
-- `/configure` — the 5-step configurator with live 3D preview
+- `/` — cinematic landing page (3D hero robe, parallax, collection cards)
+- `/shop` — the marketplace: fixed prices, 5 sizes, color variants, cart & order flow
+- `/configure` — the 3D Atelier: custom measurements + live embroidery (secondary flow)
 - `/summary` — quotation sheet with QR code, print → PDF
-- `/admin` — Atelier Console: every pricing coefficient editable live
+- `/admin` — Console: every pricing coefficient editable live
 
 ## Highlights
 
-- **Procedural 3D** (React Three Fiber): garments are rebuilt from the customer's
-  measurements — no static assets; PBR fabric with sheen + vertex-shader wind
+- **Shop-first**: ready-to-wear robes (189 TND) and capes (149 TND), S–XXL size
+  presets, premium dyes, persistent cart, 48h dispatch messaging
+- **Procedural 3D** (React Three Fiber): garments are rebuilt from measurements —
+  pleated lathe bodies, bell sleeves, mannequin bust, mortarboard with gold cord & tassel
 - **Live embroidery**: canvas-rendered thread simulation (satin / outline / 3D raised,
-  metallic shimmer, Arabic RTL) applied as a texture in 3D and printed on the quote
+  metallic shimmer, Arabic RTL) applied as a 3D texture and printed on the quote
 - **Pricing engine**: `Base + Fabric + Embroidery(stitches, density, setup) + Thread +
-  Labor + Complexity + Rush + Margin + VAT`, all coefficients editable in `/admin`
-- **Design intelligence**: one-tap layout composition and contrast-ranked university
-  color palettes
-- **UX**: undo/redo (⌘Z/⌘Y), debounced autosave, dark/light themes, keyboard + touch
+  Labor + Complexity + Rush + Margin + VAT` — all coefficients editable in `/admin`
+- **UX**: undo/redo (⌘Z/⌘Y), autosave, dark/light themes, keyboard + touch
 
 Full production architecture (database schema, API design, payments, roadmap):
 [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
