@@ -32,7 +32,7 @@ export function defaultConfig(product: ProductId = "robe"): DesignConfig {
     style: "satin",
     logo: null,
     logoScale: 1,
-    accessories: { cap: false, tassel: false, giftBox: false },
+    accessories: { cap: true, tassel: true, giftBox: false },
     urgency: "standard",
   };
 }
@@ -97,7 +97,13 @@ export const useDesignStore = create<DesignStore>()((set, get) => ({
       ...config,
       product,
       measurements: Object.fromEntries(
-        p.measurements.map((m) => [m.key, config.measurements[m.key] ?? m.default])
+        p.measurements.map((m) => {
+          const prev = config.measurements[m.key];
+          /* carry compatible values over, clamped into this product's range */
+          const v =
+            prev === undefined ? m.default : Math.min(m.max, Math.max(m.min, prev));
+          return [m.key, v];
+        })
       ),
       position: p.positions.includes(config.position)
         ? config.position

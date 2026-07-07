@@ -43,7 +43,7 @@ export default function ProductCard({
     c.colorId = colorId;
     c.measurements = { ...c.measurements, ...size.measurements };
     c.text = { name: "", faculty: "", year: "", custom: "" };
-    c.accessories = { cap: listing.product === "robe", tassel: true, giftBox: false };
+    c.accessories = { cap: true, tassel: true, giftBox: false };
     return c;
   }, [listing.product, colorId, size]);
 

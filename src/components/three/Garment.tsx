@@ -637,40 +637,52 @@ function Mortarboard({ cfg, y }: { cfg: DesignConfig; y: number }) {
   useEffect(() => () => gold.dispose(), [gold]);
 
   return (
-    <group position={[0, y, 0]} rotation={[0.04, 0.35, -0.025]}>
-      {/* skull band */}
-      <mesh material={material} castShadow>
-        <cylinderGeometry args={[0.098, 0.108, 0.075, 32]} />
+    <group position={[0, y, 0]} rotation={[0.05, 0.35, -0.03]}>
+      {/* rounded padded crown */}
+      <mesh material={material} position={[0, 0.012, 0]} scale={[1, 0.55, 1]} castShadow>
+        <sphereGeometry args={[0.105, 32, 24]} />
       </mesh>
-      {/* gold cord where the band meets the board */}
-      <mesh position={[0, 0.034, 0]} rotation={[Math.PI / 2, 0, 0]} material={gold}>
-        <torusGeometry args={[0.1, 0.0035, 8, 40]} />
+      {/* headband rim */}
+      <mesh material={material} position={[0, -0.05, 0]} rotation={[Math.PI / 2, 0, 0]}>
+        <torusGeometry args={[0.094, 0.013, 12, 40]} />
       </mesh>
       {/* board */}
-      <mesh position={[0, 0.048, 0]} rotation={[0, Math.PI / 4, 0]} material={material} castShadow>
-        <boxGeometry args={[0.32, 0.014, 0.32]} />
+      <mesh position={[0, 0.062, 0]} rotation={[0, Math.PI / 4, 0]} material={material} castShadow>
+        <boxGeometry args={[0.36, 0.016, 0.36]} />
       </mesh>
-      {/* covered center button */}
-      <mesh position={[0, 0.058, 0]} material={material}>
-        <cylinderGeometry args={[0.02, 0.024, 0.008, 16]} />
+      {/* covered center button with gold cord ring */}
+      <mesh position={[0, 0.073, 0]} material={material}>
+        <cylinderGeometry args={[0.027, 0.031, 0.01, 20]} />
+      </mesh>
+      <mesh position={[0, 0.079, 0]} scale={[1, 0.5, 1]} material={material}>
+        <sphereGeometry args={[0.025, 20, 12]} />
+      </mesh>
+      <mesh position={[0, 0.077, 0]} rotation={[Math.PI / 2, 0, 0]} material={gold}>
+        <torusGeometry args={[0.033, 0.0032, 8, 36]} />
       </mesh>
       {cfg.accessories.tassel && (
         <group>
-          <mesh position={[0, 0.062, 0]} material={gold}>
-            <sphereGeometry args={[0.012, 16, 16]} />
+          {/* cord knot on the button */}
+          <mesh position={[0, 0.085, 0]} material={gold}>
+            <sphereGeometry args={[0.009, 14, 14]} />
           </mesh>
-          {/* cord draped from the button over the board edge */}
-          <mesh position={[0.055, 0.058, 0.055]} rotation={[0, -Math.PI / 4, 1.35]} material={gold}>
-            <cylinderGeometry args={[0.002, 0.002, 0.155, 6]} />
+          {/* cord lying across the board, button → edge */}
+          <mesh position={[0.062, 0.074, 0.062]} rotation={[0, -Math.PI / 4, Math.PI / 2 - 0.06]} material={gold}>
+            <cylinderGeometry args={[0.0026, 0.0026, 0.17, 8]} />
           </mesh>
-          <mesh position={[0.108, 0.005, 0.108]} rotation={[0.25, 0, -0.25]} material={gold}>
-            <cylinderGeometry args={[0.002, 0.002, 0.1, 6]} />
+          {/* cord falling over the edge */}
+          <mesh position={[0.128, 0.022, 0.128]} rotation={[0.22, 0, -0.22]} material={gold}>
+            <cylinderGeometry args={[0.0026, 0.0026, 0.105, 8]} />
           </mesh>
-          <mesh position={[0.12, -0.06, 0.12]} material={gold}>
-            <cylinderGeometry args={[0.009, 0.013, 0.055, 12]} />
+          {/* tassel neck, head and fringe */}
+          <mesh position={[0.138, -0.038, 0.138]} material={gold}>
+            <sphereGeometry args={[0.0085, 14, 14]} />
           </mesh>
-          <mesh position={[0.12, -0.092, 0.12]} material={gold}>
-            <cylinderGeometry args={[0.013, 0.006, 0.014, 12]} />
+          <mesh position={[0.138, -0.06, 0.138]} material={gold}>
+            <cylinderGeometry args={[0.0075, 0.0125, 0.038, 14]} />
+          </mesh>
+          <mesh position={[0.138, -0.096, 0.138]} material={gold}>
+            <cylinderGeometry args={[0.0125, 0.008, 0.04, 14]} />
           </mesh>
         </group>
       )}

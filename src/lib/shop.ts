@@ -68,7 +68,7 @@ export const LISTINGS: Listing[] = [
     features: [
       "Deluxe satin face, soft matte reverse",
       "Sculpted collar, hidden clasp",
-      "Sweeps 2.2–2.8 m at the hem",
+      "Matching mortarboard cap included",
       "Ready to ship in 48h",
     ],
     deliveryDays: 4,
