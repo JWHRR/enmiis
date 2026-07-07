@@ -1,36 +1,33 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# ENMIIS Atelier
 
-## Getting Started
+A premium real-time 3D configurator for graduation apparel — robes, capes, American
+and European stoles, and Miss sashes. Measurements reshape the garment live, embroidery
+is stitched onto the fabric as you type, and a formula-driven pricing engine estimates
+cost, fabric consumption, machine time and delivery on every change.
 
-First, run the development server:
+## Run it
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- `/` — cinematic landing page (3D hero, parallax, product cards)
+- `/configure` — the 5-step configurator with live 3D preview
+- `/summary` — quotation sheet with QR code, print → PDF
+- `/admin` — Atelier Console: every pricing coefficient editable live
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Highlights
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Procedural 3D** (React Three Fiber): garments are rebuilt from the customer's
+  measurements — no static assets; PBR fabric with sheen + vertex-shader wind
+- **Live embroidery**: canvas-rendered thread simulation (satin / outline / 3D raised,
+  metallic shimmer, Arabic RTL) applied as a texture in 3D and printed on the quote
+- **Pricing engine**: `Base + Fabric + Embroidery(stitches, density, setup) + Thread +
+  Labor + Complexity + Rush + Margin + VAT`, all coefficients editable in `/admin`
+- **Design intelligence**: one-tap layout composition and contrast-ranked university
+  color palettes
+- **UX**: undo/redo (⌘Z/⌘Y), debounced autosave, dark/light themes, keyboard + touch
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Full production architecture (database schema, API design, payments, roadmap):
+[docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
